@@ -11,3 +11,11 @@ def index(request):
         'item_list': item_list,
     }
     return HttpResponse(template.render(context,request))
+
+def detail(request, item_id):
+    item=Item.objects.get(pk=item_id)
+    context={
+        'item':item
+    }
+    return render(request, 'food/detail.html', context)
+    # return HttpResponse("This is the id %s" %item_id)
